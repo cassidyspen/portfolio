@@ -32,14 +32,11 @@ body {
   font-family: var(--font-body);
   color: var(--cream);
   background-color: var(--wood-2);
-  background-image:
-    repeating-linear-gradient(89deg, transparent 0px, transparent 3px, rgba(0,0,0,0.06) 3px, rgba(0,0,0,0.06) 4px, transparent 4px, transparent 9px, rgba(255,255,255,0.018) 9px, rgba(255,255,255,0.018) 10px),
-    repeating-linear-gradient(91deg, transparent 0px, transparent 18px, rgba(0,0,0,0.04) 18px, rgba(0,0,0,0.04) 22px, transparent 22px, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 45px),
-    radial-gradient(ellipse 60% 30% at 15% 35%, rgba(15,5,0,0.45) 0%, transparent 100%),
-    radial-gradient(ellipse 40% 20% at 75% 70%, rgba(10,3,0,0.35) 0%, transparent 100%),
-    radial-gradient(ellipse 80% 40% at 50% 90%, rgba(20,8,0,0.3) 0%, transparent 100%),
-    radial-gradient(ellipse 100% 50% at 50% 0%, rgba(100,55,20,0.25) 0%, transparent 60%),
-    linear-gradient(175deg, #4a2a12 0%, #3d2010 20%, #2b1708 45%, #3a1e0a 65%, #4a2912 80%, #2e1508 100%);
+  background-image: url('/wood_background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   min-height: 100vh;
 }
 
