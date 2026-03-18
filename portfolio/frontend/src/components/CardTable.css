@@ -1,0 +1,64 @@
+.table-root {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ── */
+.table-header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 2rem 1rem 0.5rem;
+  pointer-events: none;
+}
+
+.name-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5.5vw, 4rem);
+  font-weight: 400;
+  color: var(--gold-light);
+  text-shadow:
+    0 2px 0 rgba(0,0,0,0.5),
+    0 0 40px rgba(201,169,77,0.35),
+    0 4px 20px rgba(0,0,0,0.6);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.name-subtitle {
+  font-family: var(--font-heading);
+  font-size: clamp(0.6rem, 1.3vw, 0.8rem);
+  letter-spacing: 0.3em;
+  color: var(--sage-light);
+  text-transform: uppercase;
+  opacity: 0.75;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+}
+
+/* ── Scene — free positioned ── */
+.table-scene {
+  position: relative;
+  flex: 1;
+  min-height: 75vh;
+  transition: filter 0.4s ease;
+}
+
+.table-scene--blurred {
+  filter: blur(4px) brightness(0.5);
+  pointer-events: none;
+}
+
+/* Ensure scene is tall enough for absolute-placed hands */
+.table-scene {
+  min-height: 80vh;
+}
+
+@media (max-width: 900px) {
+  .table-scene { min-height: 110vh; }
+}
+@media (max-width: 600px) {
+  .table-scene { min-height: 140vh; }
+}
