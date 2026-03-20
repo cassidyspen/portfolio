@@ -34,13 +34,11 @@ export function Card({ data, index, total }) {
         <div className="card-back">
           <div dangerouslySetInnerHTML={{ __html: makeBackPattern() }} style={{ position: 'absolute', inset: 0 }} />
           <div className="inner-border" />
-          <div className="pip-tl">{data.pip}<br />{data.suit}</div>
           <div className="back-mid">
             <div className="back-art" dangerouslySetInnerHTML={{ __html: arts[data.art] }} />
             <div className="back-title">{data.backTitle}</div>
             <div className="back-hint">tap to reveal ↻</div>
           </div>
-          <div className="pip-br">{data.pip}<br />{data.suit}</div>
         </div>
 
         {/* FACE */}

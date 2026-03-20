@@ -19,7 +19,7 @@ PORTFOLIO_DATA = {
     },
     "experience": [
         {
-            "pip": "A", "suit": "♣",
+            "pip": "A", "suit": "♠",
             "backTitle": "Software Engineer",
             "art": "flower",
             "faceTitle": "Software Engineer",
@@ -35,7 +35,7 @@ PORTFOLIO_DATA = {
             "tags": ["Full-stack", "Federal", "Consulting"]
         },
         {
-            "pip": "J", "suit": "♦",
+            "pip": "Q", "suit": "♠",
             "backTitle": "Internships ×2",
             "art": "daisy",
             "faceTitle": "Dev Intern ×2",
@@ -43,7 +43,7 @@ PORTFOLIO_DATA = {
             "tags": ["Back-end", "Front-end", "CGI"]
         },
         {
-            "pip": "10", "suit": "♥",
+            "pip": "J", "suit": "♠",
             "backTitle": "Senior Capstone",
             "art": "leaf",
             "faceTitle": "Obstacle Avoidance App",
@@ -53,7 +53,7 @@ PORTFOLIO_DATA = {
     ],
     "projects": [
         {
-            "pip": "Q", "suit": "♥",
+            "pip": "10", "suit": "♣",
             "backTitle": "re·locate",
             "backSub": "Cost of living tool",
             "art": "leaf",
@@ -64,7 +64,7 @@ PORTFOLIO_DATA = {
             "tags": ["Vanilla JS", "Vercel", "Serverless", "RapidAPI"]
         },
         {
-            "pip": "Q", "suit": "♠",
+            "pip": "9", "suit": "♣",
             "backTitle": "This Portfolio",
             "backSub": "Playing card theme",
             "art": "rose",
@@ -77,7 +77,7 @@ PORTFOLIO_DATA = {
     ],
     "tech": [
         {
-            "pip": "9", "suit": "♣",
+            "pip": "8", "suit": "♦",
             "backTitle": "Languages & Stack",
             "art": "clover",
             "faceTitle": "Languages & Stack",
@@ -85,7 +85,7 @@ PORTFOLIO_DATA = {
             "tags": ["Python", "React", "Flask"]
         },
         {
-            "pip": "8", "suit": "♥",
+            "pip": "7", "suit": "♦",
             "backTitle": "Coding Style",
             "art": "tulip",
             "faceTitle": "Coding Style",
@@ -93,7 +93,7 @@ PORTFOLIO_DATA = {
             "tags": ["Functional", "Plain JS"]
         },
         {
-            "pip": "7", "suit": "♦",
+            "pip": "6", "suit": "♦",
             "backTitle": "Why I Code",
             "art": "leaf",
             "faceTitle": "Why I Code",
@@ -111,7 +111,7 @@ PORTFOLIO_DATA = {
             "tags": ["Music", "Travel", "Spanish"]
         },
         {
-            "pip": "5", "suit": "♣",
+            "pip": "4", "suit": "♥",
             "backTitle": "Hobbies",
             "art": "music",
             "faceTitle": "Hobbies",
@@ -119,7 +119,7 @@ PORTFOLIO_DATA = {
             "tags": ["Concerts", "Building"]
         },
         {
-            "pip": "5", "suit": "♠",
+            "pip": "3", "suit": "♥",
             "backTitle": "Cats",
             "art": "cat",
             "faceTitle": "Cats",
@@ -127,7 +127,7 @@ PORTFOLIO_DATA = {
             "tags": ["Important", "Supervisors"]
         },
         {
-            "pip": "5", "suit": "♦",
+            "pip": "2", "suit": "♥",
             "backTitle": "Volunteer",
             "art": "sunflower",
             "faceTitle": "Volunteer",

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { Spread } from './components/Card'
-import ProjectCard from './components/ProjectCard'
 import DeckCorner from './components/DeckCorner'
 
 export default function App() {
@@ -43,13 +42,7 @@ export default function App() {
         <Spread cards={data.experience} label="Experience" />
 
         {/* Projects */}
-        <div className="section" style={{ animationDelay: '.25s' }}>
-          <div className="section-label">Projects</div>
-          <div className="section-hint">tap to flip for more</div>
-          <div className="proj-row">
-            {data.projects.map((p, i) => <ProjectCard key={i} data={p} />)}
-          </div>
-        </div>
+        <Spread cards={data.projects} label="Projects" />
 
         {/* Tech */}
         <Spread cards={data.tech} label="Tech Stuff" />
