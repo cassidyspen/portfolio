@@ -13,25 +13,25 @@ PORTFOLIO_DATA = {
     "experience": [
         {
             "pip": "A", "suit": "♠",
-            "backTitle": "Software Engineer",
+            "backTitle": "PNC Software Engingineer",
             "art": "flower",
             "faceTitle": "Software Engineer",
             "faceSub": "PNC Bank · Pittsburgh",
-            "faceDesc": "Python FastAPI RESTful microservices and SQL solutions to automate internal audit workflows for 400+ users. Led deployments, failover events, and security remediation, delivering 20+ releases and resolving 100+ vulnerabilities.",
+            "faceDesc": "Nov 2024 - Present: Built python FastAPI RESTful microservices and SQL solutions to automate internal audit workflows for 400+ users. Led deployments, failover events, and security remediation, delivering 20+ releases and resolving 100+ vulnerabilities.",
             "tags": ["Python", "SQL Server", "OpenShift", "Jenkins", "FastAPI"]
         },
         {
             "pip": "K", "suit": "♠",
-            "backTitle": "CGI Developer",
+            "backTitle": "CGI Software Developer",
             "art": "rose",
             "faceTitle": "Software Developer",
-            "faceSub": "CGI Federal · Consultant",
-            "faceDesc": "Full-stack development across federal client engagements.",
-            "tags": ["Full-stack", "Federal", "Consulting"]
+            "faceSub": "CGI · Pittsburgh",
+            "faceDesc": "June 2024 - Nov 2025: Built full-stack features for a pro bono Flutter/Python app supporting children with autism, including an Angular admin dashboard. Completed training in Java, SpringBoot, Docker, PostgreSQL, and RESTful API development.",
+            "tags": ["Full-stack", "Python", "Java", "Angular", "Flutter"]
         },
         {
             "pip": "Q", "suit": "♠",
-            "backTitle": "Internships ×2",
+            "backTitle": "CGI Internships",
             "art": "daisy",
             "faceTitle": "Dev Intern ×2",
             "faceSub": "CGI Federal",
