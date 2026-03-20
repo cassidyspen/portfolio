@@ -1,12 +1,5 @@
-from flask import Flask, jsonify
-from flask_cors import CORS
-
-app = Flask(__name__)
-CORS(app, resources={r"/api/*": {
-    "origins": ["http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:3000"],
-    "methods": ["GET", "OPTIONS"],
-    "allow_headers": ["Content-Type"]
-}})
+import json
+from http.server import BaseHTTPRequestHandler
 
 PORTFOLIO_DATA = {
     "name": "Cassidy Spencer",
@@ -70,9 +63,9 @@ PORTFOLIO_DATA = {
             "art": "rose",
             "title": "This Portfolio",
             "url": "#",
-            "meta": "React · Vite · Flask · AWS",
-            "desc": "Playing card–themed portfolio. React + Vite frontend, Flask backend, deployed on AWS S3, CloudFront & Elastic Beanstalk.",
-            "tags": ["React", "Vite", "Flask", "AWS"]
+            "meta": "React · Vite · Vercel",
+            "desc": "Playing card–themed portfolio. React + Vite frontend, Python serverless API, deployed on Vercel.",
+            "tags": ["React", "Vite", "Python", "Vercel"]
         }
     ],
     "tech": [
@@ -81,8 +74,8 @@ PORTFOLIO_DATA = {
             "backTitle": "Languages & Stack",
             "art": "clover",
             "faceTitle": "Languages & Stack",
-            "faceDetail": ["Python · JS · Swift", "React · Flask · Vite", "SQL Server · PostgreSQL", "AWS · OpenShift · Vercel"],
-            "tags": ["Python", "React", "Flask"]
+            "faceDetail": ["Python · JS · Swift", "React · Vite", "SQL Server · PostgreSQL", "AWS · OpenShift · Vercel"],
+            "tags": ["Python", "React", "Vercel"]
         },
         {
             "pip": "7", "suit": "♦",
@@ -138,10 +131,17 @@ PORTFOLIO_DATA = {
 }
 
 
-@app.route("/api/portfolio", methods=["GET", "OPTIONS"])
-def get_portfolio():
-    return jsonify(PORTFOLIO_DATA)
+class handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.end_headers()
+        self.wfile.write(json.dumps(PORTFOLIO_DATA).encode())
 
-
-if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    def do_OPTIONS(self):
+        self.send_response(200)
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "GET, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.end_headers()
