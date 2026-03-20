@@ -17,8 +17,8 @@ PORTFOLIO_DATA = {
             "art": "flower",
             "faceTitle": "Software Engineer",
             "faceSub": "PNC Bank · Pittsburgh",
-            "faceDesc": "Built Python data pipelines and RESTful APIs deployed on OpenShift with Jenkins CI/CD.",
-            "tags": ["Python", "SQL Server", "OpenShift"]
+            "faceDesc": "Python FastAPI RESTful microservices and SQL solutions to automate internal audit workflows for 400+ users. Led deployments, failover events, and security remediation, delivering 20+ releases and resolving 100+ vulnerabilities.",
+            "tags": ["Python", "SQL Server", "OpenShift", "Jenkins", "FastAPI"]
         },
         {
             "pip": "K", "suit": "♠",
