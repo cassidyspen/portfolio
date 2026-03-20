@@ -48,23 +48,17 @@ PORTFOLIO_DATA = {
         {
             "pip": "10", "suit": "♣",
             "backTitle": "re·locate",
-            "backSub": "Cost of living tool",
             "art": "leaf",
-            "title": "re·locate",
-            "url": "https://relocatecost.com",
-            "meta": "relocatecost.com",
-            "desc": "Compare cost of living between cities. Full 2025 tax engine — federal brackets, all 50 states + DC, FICA, healthcare.",
+            "faceTitle": "re·locate",
+            "faceDetail": ["relocatecost.com", "Compare cost of living", "Full 2025 tax engine —", "all 50 states + DC"],
             "tags": ["Vanilla JS", "Vercel", "Serverless", "RapidAPI"]
         },
         {
             "pip": "9", "suit": "♣",
             "backTitle": "This Portfolio",
-            "backSub": "Playing card theme",
             "art": "rose",
-            "title": "This Portfolio",
-            "url": "#",
-            "meta": "React · Vite · Vercel",
-            "desc": "Playing card–themed portfolio. React + Vite frontend, Python serverless API, deployed on Vercel.",
+            "faceTitle": "This Portfolio",
+            "faceDetail": ["React · Vite · Python", "Playing card theme,", "Vercel serverless", "API backend"],
             "tags": ["React", "Vite", "Python", "Vercel"]
         }
     ],
