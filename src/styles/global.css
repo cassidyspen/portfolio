@@ -389,3 +389,105 @@ body {
   from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* ── Responsive: tablet (≤ 900px) ── */
+@media (max-width: 900px) {
+  .page { padding: 36px 24px 70px; }
+
+  /* Switch from fan-spread to centered wrapping row */
+  .spread {
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 10px 0 20px;
+    align-items: flex-start;
+  }
+  .spread .card-wrap           { margin-left: 0; }
+  .spread .card-wrap:first-child { margin-left: 0; }
+
+  /* Card dimensions ~73% of desktop */
+  .card-wrap {
+    width: 200px;
+    height: 288px;
+    perspective: 1000px;
+    transform: none !important;
+  }
+  .card-wrap:hover { transform: translateY(-18px) !important; }
+
+  .card-back, .card-face, .card-inner { border-radius: 13px; }
+  .card-back .inner-border,
+  .card-face .inner-border  { inset: 8px; border-radius: 7px; }
+
+  .card-back   { padding: 13px 12px; }
+  .back-art    { width: 72px; height: 72px; }
+  .back-title  { font-size: 14px; }
+  .back-hint   { font-size: 9px; }
+  .back-mid    { gap: 5px; }
+
+  .card-face   { padding: 13px; }
+  .face-pip-tl,
+  .face-pip-br { font-size: 13px; }
+  .face-title  { font-size: 15px; }
+  .face-sub    { font-size: 9px; }
+  .face-desc   { font-size: 12px; }
+  .face-body   { gap: 4px; padding-top: 6px; }
+  .face-tag    { font-size: 8px; padding: 2px 7px; }
+  .face-tags   { gap: 2px; }
+}
+
+/* ── Responsive: mobile (≤ 560px) ── */
+@media (max-width: 560px) {
+  .page    { padding: 24px 14px 50px; }
+  .header  { margin-bottom: 40px; }
+  .section { margin-bottom: 36px; }
+  .section-hint { font-size: 8px; margin-bottom: 10px; }
+
+  /* 2-column card grid */
+  .spread {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 6px 0 10px;
+  }
+
+  /* Cards fill grid columns, height from aspect ratio */
+  .spread .card-wrap {
+    margin-left: 0;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 274 / 394;
+    transform: none !important;
+  }
+  .spread .card-wrap:hover { transform: none !important; }
+
+  /* Lone last card on an odd row → center it at single-card width */
+  .spread .card-wrap:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    width: calc((100% - 10px) / 2);
+    justify-self: center;
+  }
+
+  .card-back, .card-face, .card-inner { border-radius: 10px; }
+  .card-back .inner-border,
+  .card-face .inner-border  { inset: 6px; border-radius: 5px; }
+
+  .card-back   { padding: 10px 9px; }
+  .back-art    { width: 56px; height: 56px; }
+  .back-title  { font-size: 11px; }
+  .back-hint   { font-size: 7px; letter-spacing: .16em; }
+  .back-mid    { gap: 4px; }
+
+  .card-face   { padding: 10px; }
+  .face-pip-tl,
+  .face-pip-br { font-size: 10px; }
+  .face-title  { font-size: 12px; }
+  .face-sub    { font-size: 7px; letter-spacing: .12em; }
+  .face-desc   { font-size: 9.5px; line-height: 1.5; }
+  .face-body   { gap: 3px; padding-top: 4px; }
+  .face-tag    { font-size: 7px; padding: 2px 5px; letter-spacing: .1em; }
+  .face-tags   { gap: 2px; }
+
+  /* Smaller deck corner so it doesn't crowd cards */
+  .deck-corner { bottom: 14px; right: 14px; }
+  .deck-wrap   { width: 48px; height: 68px; }
+  .deck-card   { width: 42px; height: 60px; }
+}

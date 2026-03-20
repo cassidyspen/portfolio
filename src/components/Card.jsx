@@ -64,7 +64,7 @@ export function Spread({ cards, label, hint }) {
   return (
     <div className="section">
       <div className="section-label">{label}</div>
-      <div className="section-hint">{hint || 'hover to lift · tap to reveal'}</div>
+      <div className="section-hint">{hint || 'tap to reveal · hover to lift'}</div>
       <div className="spread">
         {cards.map((card, i) => (
           <Card key={i} data={card} index={i} total={cards.length} />
