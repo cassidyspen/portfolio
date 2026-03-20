@@ -8,7 +8,7 @@ export default function App() {
 
   useEffect(() => {
     fetch('/api/portfolio')
-      .then(r => r.json())
+      .then(r => { if (!r.ok) throw new Error(r.status); return r.json() })
       .then(setData)
       .catch(() => setError('Could not load portfolio data.'))
   }, [])
