@@ -266,15 +266,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 5px;
-}
-.face-art {
-  width: 60px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding-top: 6px;
 }
 .face-title {
   font-family: 'Playfair Display', serif;
@@ -285,19 +279,28 @@ body {
   text-align: center;
   line-height: 1.25;
 }
-.face-detail {
-  font-size: 10.5px;
-  color: #6a8858;
+.face-sub {
+  font-size: 8.5px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #8a9e70;
   text-align: center;
-  line-height: 1.55;
-  letter-spacing: .03em;
+}
+.face-desc {
+  font-size: 10px;
+  color: #5a7048;
+  text-align: center;
+  line-height: 1.6;
+  letter-spacing: .02em;
+  margin-top: 2px;
 }
 .face-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 3px;
   justify-content: center;
-  margin-top: 4px;
+  margin-top: auto;
+  padding-bottom: 2px;
 }
 .face-tag {
   font-size: 8px;

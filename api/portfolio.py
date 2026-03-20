@@ -6,9 +6,9 @@ PORTFOLIO_DATA = {
     "title": "Software Engineer",
     "location": "Pittsburgh",
     "contact": {
-        "linkedin": "https://linkedin.com/in/cassidyspencer",
-        "github": "https://github.com/cassidyspencer",
-        "email": "hello@cassidyspencer.dev"
+        "linkedin": "https://linkedin.com/in/cassidy-spencer-cs",
+        "github": "https://github.com/cassidyspen",
+        "email": "cassidyspencer.dev@gmail.com"
     },
     "experience": [
         {
@@ -16,7 +16,8 @@ PORTFOLIO_DATA = {
             "backTitle": "Software Engineer",
             "art": "flower",
             "faceTitle": "Software Engineer",
-            "faceDetail": ["PNC Bank · Pittsburgh", "Python pipelines &", "RESTful APIs", "OpenShift · Jenkins CI/CD"],
+            "faceSub": "PNC Bank · Pittsburgh",
+            "faceDesc": "Built Python data pipelines and RESTful APIs deployed on OpenShift with Jenkins CI/CD.",
             "tags": ["Python", "SQL Server", "OpenShift"]
         },
         {
@@ -24,7 +25,8 @@ PORTFOLIO_DATA = {
             "backTitle": "CGI Developer",
             "art": "rose",
             "faceTitle": "Software Developer",
-            "faceDetail": ["CGI Federal · Consultant", "Full-stack development", "across federal client", "engagements"],
+            "faceSub": "CGI Federal · Consultant",
+            "faceDesc": "Full-stack development across federal client engagements.",
             "tags": ["Full-stack", "Federal", "Consulting"]
         },
         {
@@ -32,7 +34,8 @@ PORTFOLIO_DATA = {
             "backTitle": "Internships ×2",
             "art": "daisy",
             "faceTitle": "Dev Intern ×2",
-            "faceDetail": ["CGI Federal", "Back-end & Front-end", "rotations — real features", "in both stacks"],
+            "faceSub": "CGI Federal",
+            "faceDesc": "Back-end & front-end rotations — shipped real features in both stacks.",
             "tags": ["Back-end", "Front-end", "CGI"]
         },
         {
@@ -40,7 +43,8 @@ PORTFOLIO_DATA = {
             "backTitle": "Senior Capstone",
             "art": "leaf",
             "faceTitle": "Obstacle Avoidance App",
-            "faceDetail": ["USD Senior Capstone", "iPhone app for users", "with visual impairments", "Swift · Xcode · Core ML"],
+            "faceSub": "USD Senior Capstone",
+            "faceDesc": "iPhone app for users with visual impairments built with Swift, Xcode & Core ML.",
             "tags": ["Swift", "Core ML", "iOS"]
         }
     ],
@@ -50,7 +54,8 @@ PORTFOLIO_DATA = {
             "backTitle": "re·locate",
             "art": "leaf",
             "faceTitle": "re·locate",
-            "faceDetail": ["relocatecost.com", "Compare cost of living", "Full 2025 tax engine —", "all 50 states + DC"],
+            "faceSub": "relocatecost.com",
+            "faceDesc": "Compare cost of living across all 50 states + DC with a full 2025 tax engine.",
             "tags": ["Vanilla JS", "Vercel", "Serverless", "RapidAPI"]
         },
         {
@@ -58,7 +63,8 @@ PORTFOLIO_DATA = {
             "backTitle": "This Portfolio",
             "art": "rose",
             "faceTitle": "This Portfolio",
-            "faceDetail": ["React · Vite · Python", "Playing card theme,", "Vercel serverless", "API backend"],
+            "faceSub": "React · Vite · Python",
+            "faceDesc": "Playing card themed portfolio with a Vercel serverless API backend.",
             "tags": ["React", "Vite", "Python", "Vercel"]
         }
     ],
@@ -68,7 +74,8 @@ PORTFOLIO_DATA = {
             "backTitle": "Languages & Stack",
             "art": "clover",
             "faceTitle": "Languages & Stack",
-            "faceDetail": ["Python · JS · Swift", "React · Vite", "SQL Server · PostgreSQL", "AWS · OpenShift · Vercel"],
+            "faceSub": "Full-Stack",
+            "faceDesc": "Python · JS · Swift · React · Vite · SQL Server · PostgreSQL · AWS · OpenShift · Vercel",
             "tags": ["Python", "React", "Vercel"]
         },
         {
@@ -76,7 +83,8 @@ PORTFOLIO_DATA = {
             "backTitle": "Coding Style",
             "art": "tulip",
             "faceTitle": "Coding Style",
-            "faceDetail": ["Functional components,", "clean separation of concerns", "Plain JS over TypeScript", "Flask blueprints, no fuss"],
+            "faceSub": "Philosophy",
+            "faceDesc": "Functional components, clean separation of concerns. Plain JS over TypeScript. Flask blueprints, no fuss.",
             "tags": ["Functional", "Plain JS"]
         },
         {
@@ -84,7 +92,8 @@ PORTFOLIO_DATA = {
             "backTitle": "Why I Code",
             "art": "leaf",
             "faceTitle": "Why I Code",
-            "faceDetail": ["Building things that", "actually help people —", "from accessibility apps", "to cost-of-living tools"],
+            "faceSub": "Mission",
+            "faceDesc": "Building things that actually help people — from accessibility apps to cost-of-living tools.",
             "tags": ["Impact", "Accessibility"]
         }
     ],
@@ -94,7 +103,8 @@ PORTFOLIO_DATA = {
             "backTitle": "Passions",
             "art": "tulip",
             "faceTitle": "Passions",
-            "faceDetail": ["Music, travel, language", "Spanish minor — love", "connecting across cultures", "Always planning next trip"],
+            "faceSub": "Music · Travel · Language",
+            "faceDesc": "Spanish minor — love connecting across cultures. Always planning the next trip.",
             "tags": ["Music", "Travel", "Spanish"]
         },
         {
@@ -102,7 +112,8 @@ PORTFOLIO_DATA = {
             "backTitle": "Hobbies",
             "art": "music",
             "faceTitle": "Hobbies",
-            "faceDetail": ["Concert-going, exploring", "new cities, building", "side projects that start", "as \"just an idea\""],
+            "faceSub": "Off the Clock",
+            "faceDesc": "Concert-going, exploring new cities, building side projects that start as \"just an idea\".",
             "tags": ["Concerts", "Building"]
         },
         {
@@ -110,7 +121,8 @@ PORTFOLIO_DATA = {
             "backTitle": "Cats",
             "art": "cat",
             "faceTitle": "Cats",
-            "faceDetail": ["Proudly owned by cats", "They supervise all", "coding sessions and", "have strong opinions"],
+            "faceSub": "Chief Supervisors",
+            "faceDesc": "Proudly owned by cats. They supervise all coding sessions and have strong opinions.",
             "tags": ["Important", "Supervisors"]
         },
         {
@@ -118,7 +130,8 @@ PORTFOLIO_DATA = {
             "backTitle": "Volunteer",
             "art": "sunflower",
             "faceTitle": "Volunteer",
-            "faceDetail": ["Giving time to causes", "that matter — community", "and accessibility close", "to my heart"],
+            "faceSub": "Community & Accessibility",
+            "faceDesc": "Giving time to causes that matter — community and accessibility close to my heart.",
             "tags": ["Community", "Accessibility"]
         }
     ]

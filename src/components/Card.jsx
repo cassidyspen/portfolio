@@ -46,13 +46,9 @@ export function Card({ data, index, total }) {
           <div className="inner-border" />
           <div className="face-pip-tl">{data.pip}<br />{data.suit}</div>
           <div className="face-body">
-            <div className="face-art" dangerouslySetInnerHTML={{ __html: arts[data.art] }} />
             <div className="face-title">{data.faceTitle}</div>
-            <div className="face-detail">
-              {data.faceDetail.map((line, i) => (
-                <span key={i}>{line}{i < data.faceDetail.length - 1 && <br />}</span>
-              ))}
-            </div>
+            <div className="face-sub">{data.faceSub}</div>
+            <div className="face-desc">{data.faceDesc}</div>
             <div className="face-tags">
               {data.tags.map(t => <span key={t} className="face-tag">{t}</span>)}
             </div>
