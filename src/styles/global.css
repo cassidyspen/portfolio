@@ -398,7 +398,7 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Mobile / small screens ── */
+/* ── Mobile / small screens  ── */
 @media (max-width: 900px) {
   /* Body is wider than viewport so background extends left/right when swiping.
      App.jsx scrolls to center on mount so there's equal space on both sides. */
