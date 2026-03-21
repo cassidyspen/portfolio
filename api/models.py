@@ -8,9 +8,15 @@ class Contact:
     linkedin: str
     github: str
     email: str
+    resume: str = ""
 
     def to_dict(self) -> dict:
-        return {"linkedin": self.linkedin, "github": self.github, "email": self.email}
+        return {
+            "linkedin": self.linkedin,
+            "github": self.github,
+            "email": self.email,
+            "resume": self.resume,
+        }
 
 
 @dataclass
@@ -24,6 +30,7 @@ class Card:
     face_desc: str
     tags: List[str]
     face_sub2: str = ""
+    link: str = ""
 
     def to_dict(self) -> dict:
         return {
@@ -36,6 +43,7 @@ class Card:
             "faceSub2": self.face_sub2,
             "faceDesc": self.face_desc,
             "tags": self.tags,
+            "link": self.link,
         }
 
 

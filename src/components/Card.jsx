@@ -18,7 +18,6 @@ export function Card({ data, index, total }) {
   const [zoomed, setZoomed] = useState(false)
   const rot = getRot(index, total)
 
-  // Reduce rotation on mobile so the tight fan stays readable
   const rotScale = typeof window !== 'undefined' && window.innerWidth < 900 ? 0.35 : 1
   const r = rot * rotScale
 
@@ -32,10 +31,25 @@ export function Card({ data, index, total }) {
 
   const bringToFront = () => setMyZ(++zTop)
 
+  const handleFocus = () => { setLifted(true); bringToFront() }
+  const handleBlur  = e => { if (!e.currentTarget.contains(e.relatedTarget)) setLifted(false) }
+
+  const handleKeyDown = e => {
+    // Let native elements handle their own keys
+    if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') return
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      bringToFront()
+      setFlipped(f => !f)
+    } else if (e.key === 'Escape' && flipped) {
+      setFlipped(false)
+    }
+  }
+
   const modal = zoomed ? ReactDOM.createPortal(
     <div className="card-modal-backdrop" onClick={() => setZoomed(false)}>
       <div className="card-modal" onClick={e => e.stopPropagation()}>
-        <button className="card-modal-close" onClick={() => setZoomed(false)}>✕</button>
+        <button className="card-modal-close" onClick={() => setZoomed(false)} aria-label="Close">✕</button>
         <div className="face-title">{data.faceTitle}</div>
         <div className="face-sub">{data.faceSub}</div>
         {data.faceSub2 && <div className="face-sub">{data.faceSub2}</div>}
@@ -43,6 +57,11 @@ export function Card({ data, index, total }) {
         <div className="face-tags">
           {data.tags.map(t => <span key={t} className="face-tag">{t}</span>)}
         </div>
+        {data.link && (
+          <a className="face-link" href={data.link} target="_blank" rel="noreferrer">
+            Visit ↗
+          </a>
+        )}
       </div>
     </div>,
     document.body
@@ -53,13 +72,20 @@ export function Card({ data, index, total }) {
       <div
         className={`card-wrap${flipped ? ' flipped' : ''}`}
         style={{ transform, zIndex: myZ }}
+        tabIndex={0}
+        role="button"
+        aria-pressed={flipped}
+        aria-label={flipped ? `${data.faceTitle}: ${data.faceDesc}` : `Reveal ${data.backTitle}`}
         onMouseEnter={() => { setLifted(true); bringToFront() }}
         onMouseLeave={() => setLifted(false)}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
         onClick={() => { bringToFront(); setFlipped(f => !f) }}
+        onKeyDown={handleKeyDown}
       >
         <div className="card-inner">
           {/* BACK */}
-          <div className="card-back">
+          <div className="card-back" aria-hidden={flipped}>
             <div dangerouslySetInnerHTML={{ __html: makeBackPattern() }} style={{ position: 'absolute', inset: 0 }} />
             <div className="inner-border" />
             <div className="back-mid">
@@ -70,7 +96,7 @@ export function Card({ data, index, total }) {
           </div>
 
           {/* FACE */}
-          <div className="card-face">
+          <div className="card-face" aria-hidden={!flipped}>
             <div className="inner-border" />
             <div className="face-pip-tl">{data.pip}<br />{data.suit}</div>
             <div className="face-body">
@@ -81,10 +107,23 @@ export function Card({ data, index, total }) {
               <div className="face-tags">
                 {data.tags.map(t => <span key={t} className="face-tag">{t}</span>)}
               </div>
+              {data.link && (
+                <a
+                  className="face-link"
+                  href={data.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  tabIndex={flipped ? 0 : -1}
+                  onClick={e => e.stopPropagation()}
+                >
+                  Visit↗
+                </a>
+              )}
             </div>
             <div className="face-pip-br">{data.pip}<br />{data.suit}</div>
             <button
               className="card-zoom-btn"
+              tabIndex={-1}
               onClick={e => { e.stopPropagation(); setZoomed(true) }}
               aria-label="Expand card"
             >⤢</button>
@@ -100,7 +139,7 @@ export function Spread({ cards, label, hint, noLabel }) {
   return (
     <div className={`section${noLabel ? ' section-continuation' : ''}`}>
       {!noLabel && <div className="section-label">{label}</div>}
-      {!noLabel && <div className="section-hint">{hint || 'hover to lift · tap to reveal'}</div>}
+      {!noLabel && <div className="section-hint">{hint || 'hover or tab to lift · press to reveal'}</div>}
       <div className={`spread spread-${cards.length}`}>
         {cards.map((card, i) => (
           <Card key={i} data={card} index={i} total={cards.length} />

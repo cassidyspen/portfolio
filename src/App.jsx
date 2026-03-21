@@ -54,6 +54,10 @@ export default function App() {
           <a className="contact-link" href={data.contact.github} target="_blank" rel="noreferrer">GitHub</a>
           <span className="contact-sep">·</span>
           <a className="contact-link" href={`mailto:${data.contact.email}`}>{data.contact.email}</a>
+          {data.contact.resume && <>
+            <span className="contact-sep">·</span>
+            <a className="contact-link" href={data.contact.resume} target="_blank" rel="noreferrer">Resume</a>
+          </>}
         </div>
       </header>
 
@@ -76,6 +80,11 @@ export default function App() {
         : <><Spread cards={data.about.slice(0, 2)} label="About Me" />
             <Spread cards={data.about.slice(2, 4)} noLabel /></>
       }
+      <footer className="footer">
+        <a className="contact-link" href="https://docs.google.com/forms/d/e/1FAIpQLScPVYlqdGVZda0mMjoYShRdFUDnkoVSTceyfL31EYMeNGGh0g/viewform?usp=dialog">
+          Feedback - Thank you!
+        </a>
+      </footer>
     </div>
   )
 }

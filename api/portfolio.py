@@ -15,6 +15,7 @@ _portfolio = Portfolio(
         linkedin="https://linkedin.com/in/cassidy-spencer-cs",
         github="https://github.com/cassidyspen",
         email="cassidyspencer.dev@gmail.com",
+        resume="https://docs.google.com/document/d/1HammHRgfye52DshjDyQpzzXeRrq_Pykq/edit?usp=sharing&ouid=102317221848885023723&rtpof=true&sd=true",
     ),
     experience=[
         Card(
@@ -51,12 +52,14 @@ _portfolio = Portfolio(
             face_title="re·locate", face_sub="relocatecost.com",
             face_desc="Built a cost of living calculator by using prompt engineering with Anthropic Claude and ChatGPT to compare living costs with 8000+ cities.",
             tags=["Vanilla JS", "Vercel", "CSS", "RapidAPI", "HTML"],
+            link="https://relocatecost.com",
         ),
         Card(
             pip="9", suit="♣", back_title="This Portfolio", art="rose",
             face_title="This Portfolio", face_sub="cassidyspencer.dev",
-            face_desc="You're looking at it! Playing card themed portfolio hosted on Vercal with Python and React",
+            face_desc="You're looking at it! Playing card themed portfolio hosted on Vercel with Python and React",
             tags=["React", "Vite", "Python", "Vercel"],
+            link="https://github.com/cassidyspen/portfolio",
         ),
     ],
     tech=[
