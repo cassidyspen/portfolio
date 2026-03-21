@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ReactDOM from 'react-dom'
 import { arts, makeBackPattern } from '../data/arts'
 
 const ROTS = { 3: [-3, 0, 3], 4: [-4.5, -1.5, 1.5, 4.5] }
@@ -8,64 +9,99 @@ function getRot(index, total) {
   return rots[index] ?? 0
 }
 
+let zTop = 10
+
 export function Card({ data, index, total }) {
   const [flipped, setFlipped] = useState(false)
   const [lifted, setLifted] = useState(false)
+  const [myZ, setMyZ] = useState(index + 1)
+  const [zoomed, setZoomed] = useState(false)
   const rot = getRot(index, total)
 
-  const baseTransform = `rotate(${rot}deg)`
-  const hoverTransform = `rotate(${rot * 0.3}deg) translateY(-18px)`
-  const flippedTransform = `rotate(${rot * 0.3}deg) translateY(-10px)`
+  // Reduce rotation on mobile so the tight fan stays readable
+  const rotScale = typeof window !== 'undefined' && window.innerWidth < 900 ? 0.35 : 1
+  const r = rot * rotScale
+
+  const baseTransform = `rotate(${r}deg)`
+  const hoverTransform = `rotate(${r * 0.3}deg) translateY(-18px)`
+  const flippedTransform = `rotate(${r * 0.3}deg) translateY(-10px)`
 
   let transform = baseTransform
   if (flipped) transform = flippedTransform
   else if (lifted) transform = hoverTransform
 
-  return (
-    <div
-      className={`card-wrap${flipped ? ' flipped' : ''}`}
-      style={{ transform, zIndex: lifted || flipped ? 10 : index + 1 }}
-      onMouseEnter={() => setLifted(true)}
-      onMouseLeave={() => { setLifted(false) }}
-      onClick={() => setFlipped(f => !f)}
-    >
-      <div className="card-inner">
-        {/* BACK */}
-        <div className="card-back">
-          <div dangerouslySetInnerHTML={{ __html: makeBackPattern() }} style={{ position: 'absolute', inset: 0 }} />
-          <div className="inner-border" />
-          <div className="back-mid">
-            <div className="back-art" dangerouslySetInnerHTML={{ __html: arts[data.art] }} />
-            <div className="back-title">{data.backTitle}</div>
-            <div className="back-hint">tap to reveal ↻</div>
-          </div>
-        </div>
+  const bringToFront = () => setMyZ(++zTop)
 
-        {/* FACE */}
-        <div className="card-face">
-          <div className="inner-border" />
-          <div className="face-pip-tl">{data.pip}<br />{data.suit}</div>
-          <div className="face-body">
-            <div className="face-title">{data.faceTitle}</div>
-            <div className="face-sub">{data.faceSub}</div>
-            <div className="face-desc">{data.faceDesc}</div>
-            <div className="face-tags">
-              {data.tags.map(t => <span key={t} className="face-tag">{t}</span>)}
-            </div>
-          </div>
-          <div className="face-pip-br">{data.pip}<br />{data.suit}</div>
+  const modal = zoomed ? ReactDOM.createPortal(
+    <div className="card-modal-backdrop" onClick={() => setZoomed(false)}>
+      <div className="card-modal" onClick={e => e.stopPropagation()}>
+        <button className="card-modal-close" onClick={() => setZoomed(false)}>✕</button>
+        <div className="face-title">{data.faceTitle}</div>
+        <div className="face-sub">{data.faceSub}</div>
+        {data.faceSub2 && <div className="face-sub">{data.faceSub2}</div>}
+        <div className="face-desc">{data.faceDesc}</div>
+        <div className="face-tags">
+          {data.tags.map(t => <span key={t} className="face-tag">{t}</span>)}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
+  ) : null
+
+  return (
+    <>
+      <div
+        className={`card-wrap${flipped ? ' flipped' : ''}`}
+        style={{ transform, zIndex: myZ }}
+        onMouseEnter={() => { setLifted(true); bringToFront() }}
+        onMouseLeave={() => setLifted(false)}
+        onClick={() => { bringToFront(); setFlipped(f => !f) }}
+      >
+        <div className="card-inner">
+          {/* BACK */}
+          <div className="card-back">
+            <div dangerouslySetInnerHTML={{ __html: makeBackPattern() }} style={{ position: 'absolute', inset: 0 }} />
+            <div className="inner-border" />
+            <div className="back-mid">
+              <div className="back-art" dangerouslySetInnerHTML={{ __html: arts[data.art] }} />
+              <div className="back-title">{data.backTitle}</div>
+              <div className="back-hint">tap to reveal ↻</div>
+            </div>
+          </div>
+
+          {/* FACE */}
+          <div className="card-face">
+            <div className="inner-border" />
+            <div className="face-pip-tl">{data.pip}<br />{data.suit}</div>
+            <div className="face-body">
+              <div className="face-title">{data.faceTitle}</div>
+              <div className="face-sub">{data.faceSub}</div>
+              <div className="face-sub">{data.faceSub2}</div>
+              <div className="face-desc">{data.faceDesc}</div>
+              <div className="face-tags">
+                {data.tags.map(t => <span key={t} className="face-tag">{t}</span>)}
+              </div>
+            </div>
+            <div className="face-pip-br">{data.pip}<br />{data.suit}</div>
+            <button
+              className="card-zoom-btn"
+              onClick={e => { e.stopPropagation(); setZoomed(true) }}
+              aria-label="Expand card"
+            >⤢</button>
+          </div>
+        </div>
+      </div>
+      {modal}
+    </>
   )
 }
 
-export function Spread({ cards, label, hint }) {
+export function Spread({ cards, label, hint, noLabel }) {
   return (
-    <div className="section">
-      <div className="section-label">{label}</div>
-      <div className="section-hint">{hint || 'tap to reveal · hover to lift'}</div>
-      <div className="spread">
+    <div className={`section${noLabel ? ' section-continuation' : ''}`}>
+      {!noLabel && <div className="section-label">{label}</div>}
+      {!noLabel && <div className="section-hint">{hint || 'hover to lift · tap to reveal'}</div>}
+      <div className={`spread spread-${cards.length}`}>
         {cards.map((card, i) => (
           <Card key={i} data={card} index={i} total={cards.length} />
         ))}
