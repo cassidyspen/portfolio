@@ -312,6 +312,7 @@ body {
   margin-top: 2px;
   margin-left: 10px;
   margin-right: 10px;
+  white-space: pre-wrap;
 }
 .face-tags {
   display: flex;
@@ -330,6 +331,20 @@ body {
   border-radius: 20px;
   padding: 3px 9px;
   background: rgba(150,200,110,.08);
+}
+
+.face-images {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  width: 100%;
+}
+.face-img {
+  width: calc(50% - 3px);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #d8ccaa;
 }
 
 .face-link {

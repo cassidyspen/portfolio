@@ -74,6 +74,13 @@ export function Card({ data, index, total }) {
           <div className="face-sub">{data.faceSub}</div>
           {data.faceSub2 && <div className="face-sub">{data.faceSub2}</div>}
           <div className="face-desc">{data.faceDesc}</div>
+          {data.images && data.images.length > 0 && (
+            <div className="face-images">
+              {data.images.map((src, i) => (
+                <img key={i} className="face-img" src={src} alt={data.tags[i] || `photo ${i + 1}`} />
+              ))}
+            </div>
+          )}
           <div className="face-tags">
             {data.tags.map(t => <span key={t} className="face-tag">{t}</span>)}
           </div>
@@ -114,7 +121,7 @@ export function Card({ data, index, total }) {
             <div className="back-mid">
               <div className="back-art" dangerouslySetInnerHTML={{ __html: arts[data.art] }} />
               <div className="back-title">{data.backTitle}</div>
-              <div className="back-hint">tap to reveal ↻</div>
+              <div className="back-hint">tap to reveal</div>
             </div>
           </div>
 
@@ -127,6 +134,13 @@ export function Card({ data, index, total }) {
               <div className="face-sub">{data.faceSub}</div>
               <div className="face-sub">{data.faceSub2}</div>
               <div className="face-desc">{data.faceDesc}</div>
+              {data.images && data.images.length > 0 && (
+                <div className="face-images">
+                  {data.images.map((src, i) => (
+                    <img key={i} className="face-img" src={src} alt={data.tags[i] || `photo ${i + 1}`} />
+                  ))}
+                </div>
+              )}
               <div className="face-tags">
                 {data.tags.map(t => <span key={t} className="face-tag">{t}</span>)}
               </div>

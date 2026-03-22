@@ -1,5 +1,5 @@
 import json
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List
 
 
@@ -32,6 +32,7 @@ class Card:
     face_sub2: str = ""
     link: str = ""
     link_label: str = ""
+    images: List[str] = field(default_factory=list)
 
     def to_dict(self) -> dict:
         return {
@@ -46,6 +47,7 @@ class Card:
             "tags": self.tags,
             "link": self.link,
             "linkLabel": self.link_label,
+            "images": self.images,
         }
 
 
