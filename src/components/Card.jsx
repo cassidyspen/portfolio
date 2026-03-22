@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { arts, makeBackPattern } from '../data/arts'
 
@@ -16,6 +16,7 @@ export function Card({ data, index, total }) {
   const [lifted, setLifted] = useState(false)
   const [myZ, setMyZ] = useState(index + 1)
   const [zoomed, setZoomed] = useState(false)
+  const clickRef = useRef(null)
   const rot = getRot(index, total)
 
   const rotScale = typeof window !== 'undefined' && window.innerWidth < 900 ? 0.35 : 1
@@ -31,11 +32,26 @@ export function Card({ data, index, total }) {
 
   const bringToFront = () => setMyZ(++zTop)
 
+  // Single click → flip (after 240ms to allow double-click detection)
+  // Double click → zoom
+  const handleClick = () => {
+    bringToFront()
+    if (clickRef.current !== null) {
+      clearTimeout(clickRef.current)
+      clickRef.current = null
+      setZoomed(true)
+    } else {
+      clickRef.current = setTimeout(() => {
+        clickRef.current = null
+        setFlipped(f => !f)
+      }, 240)
+    }
+  }
+
   const handleFocus = () => { setLifted(true); bringToFront() }
   const handleBlur  = e => { if (!e.currentTarget.contains(e.relatedTarget)) setLifted(false) }
 
   const handleKeyDown = e => {
-    // Let native elements handle their own keys
     if (e.target.tagName === 'A' || e.target.tagName === 'BUTTON') return
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault()
@@ -46,22 +62,29 @@ export function Card({ data, index, total }) {
     }
   }
 
+  const linkLabel = data.linkLabel || 'Visit ↗'
+
   const modal = zoomed ? ReactDOM.createPortal(
     <div className="card-modal-backdrop" onClick={() => setZoomed(false)}>
       <div className="card-modal" onClick={e => e.stopPropagation()}>
         <button className="card-modal-close" onClick={() => setZoomed(false)} aria-label="Close">✕</button>
-        <div className="face-title">{data.faceTitle}</div>
-        <div className="face-sub">{data.faceSub}</div>
-        {data.faceSub2 && <div className="face-sub">{data.faceSub2}</div>}
-        <div className="face-desc">{data.faceDesc}</div>
-        <div className="face-tags">
-          {data.tags.map(t => <span key={t} className="face-tag">{t}</span>)}
+        <div className="face-pip-tl">{data.pip}<br />{data.suit}</div>
+        <div className="face-body">
+          <div className="face-title">{data.faceTitle}</div>
+          <div className="face-sub">{data.faceSub}</div>
+          {data.faceSub2 && <div className="face-sub">{data.faceSub2}</div>}
+          <div className="face-desc">{data.faceDesc}</div>
+          <div className="face-tags">
+            {data.tags.map(t => <span key={t} className="face-tag">{t}</span>)}
+          </div>
+          {data.link && (
+            <a className="face-link" href={data.link} target="_blank" rel="noreferrer"
+               onClick={e => e.stopPropagation()}>
+              {linkLabel}
+            </a>
+          )}
         </div>
-        {data.link && (
-          <a className="face-link" href={data.link} target="_blank" rel="noreferrer">
-            Visit ↗
-          </a>
-        )}
+        <div className="face-pip-br">{data.pip}<br />{data.suit}</div>
       </div>
     </div>,
     document.body
@@ -80,7 +103,7 @@ export function Card({ data, index, total }) {
         onMouseLeave={() => setLifted(false)}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        onClick={() => { bringToFront(); setFlipped(f => !f) }}
+        onClick={handleClick}
         onKeyDown={handleKeyDown}
       >
         <div className="card-inner">
@@ -116,7 +139,7 @@ export function Card({ data, index, total }) {
                   tabIndex={flipped ? 0 : -1}
                   onClick={e => e.stopPropagation()}
                 >
-                  Visit↗
+                  {linkLabel}
                 </a>
               )}
             </div>

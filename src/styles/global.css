@@ -19,13 +19,13 @@ body {
 
 /* ── Page ── */
 .page {
-  max-width: 1060px;
+  max-width: min(96vw, 1400px);
   margin: 0 auto;
-  padding: 44px 28px 90px;
+  padding: 44px 20px 90px;
 }
 
 @media (min-width: 1230px) {
-  .page { max-width: 1180px; }
+  .page { max-width: min(96vw, 1800px); }
 }
 
 /* ── Header ── */
@@ -136,7 +136,7 @@ body {
   align-items: flex-end;
   padding: 8px 0 28px;
 }
-.spread .card-wrap { margin-left: -33px; }
+.spread .card-wrap { margin-left: clamp(-41px, -2.4vw, -33px); }
 .spread .card-wrap:first-child { margin-left: 0; }
 .spread .card-wrap:nth-child(1) { z-index: 1; }
 .spread .card-wrap:nth-child(2) { z-index: 2; }
@@ -147,15 +147,18 @@ body {
 
 /* ── Card ── */
 .card-wrap {
-  width: 274px;
-  height: 394px;
+  width: clamp(274px, 20vw, 340px);
+  aspect-ratio: 274 / 394;
+  height: auto;
   flex-shrink: 0;
   cursor: pointer;
-  perspective: 1375px;
+  perspective: clamp(1375px, 100vw, 1700px);
   position: relative;
   transition: transform .35s cubic-bezier(.34,1.4,.64,1);
 }
-.card-wrap:hover { transform: translateY(-23px) !important; }
+@media (hover: hover) {
+  .card-wrap:hover { transform: translateY(-23px) !important; }
+}
 .card-wrap:focus-visible {
   outline: 2px solid #7a9060;
   outline-offset: 6px;
@@ -226,6 +229,8 @@ body {
   align-items: center;
   justify-content: center;
   gap: 7px;
+  position: relative;
+  z-index: 2;
 }
 .back-art {
   width: 95px;
@@ -306,6 +311,7 @@ body {
   letter-spacing: .02em;
   margin-top: 2px;
   margin-left: 10px;
+  margin-right: 10px;
 }
 .face-tags {
   display: flex;
@@ -418,10 +424,10 @@ body {
 
 /* ── Mobile / small screens  ── */
 @media (max-width: 900px) {
-  /* Body is wider than viewport so background extends left/right when swiping.
-     App.jsx scrolls to center on mount so there's equal space on both sides. */
   body {
     min-width: 600px;
+    touch-action: pan-y;
+    overscroll-behavior-x: none;
   }
 
   /* Page stays at viewport width (not the wider body width) and stays centered */
@@ -507,7 +513,7 @@ body {
     width: 24px;
     height: 24px;
     background: rgba(253,250,242,.9);
-    border: 1px solid #d8ccaa;
+    border: none;
     border-radius: 5px;
     color: #5a8a3a;
     font-size: 13px;
@@ -515,54 +521,61 @@ body {
     padding: 0;
     line-height: 1;
   }
+}
 
-  .card-modal-backdrop {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    background: rgba(45,35,20,.55);
-    backdrop-filter: blur(2px);
-  }
+/* ── Card zoom modal ── */
+.card-modal-backdrop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(45,35,20,.55);
+  backdrop-filter: blur(2px);
+}
 
-  .card-modal {
-    position: relative;
-    background: #fdfaf2;
-    border: 1.5px solid #d8ccaa;
-    border-radius: 16px;
-    padding: 28px 22px 22px;
-    width: 85vw;
-    max-width: 400px;
-    max-height: 82vh;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    box-shadow: 0 8px 32px rgba(100,80,40,.22);
-  }
+.card-modal {
+  position: relative;
+  background: #fdfaf2;
+  border: 1.5px solid #d8ccaa;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(100,80,40,.22);
+  overflow: hidden;
+  /* Card proportions */
+  aspect-ratio: 274 / 394;
+  max-height: 80vh;
+  max-width: 80vw;
+  /* Card face layout */
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
 
-  .card-modal-close {
-    position: absolute;
-    top: 10px;
-    right: 12px;
-    background: transparent;
-    border: none;
-    color: #8a9e70;
-    font-size: 18px;
-    cursor: pointer;
-    padding: 4px;
-    line-height: 1;
-  }
+.card-modal-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  color: #8a9e70;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  z-index: 2;
+}
 
-  /* Restore readable font sizes inside the modal */
-  .card-modal .face-title { font-size: 20px; }
-  .card-modal .face-sub   { font-size: 11px; letter-spacing: .15em; }
-  .card-modal .face-desc  { font-size: 14px; line-height: 1.6; margin-top: 4px; }
-  .card-modal .face-tags  { gap: 5px; margin-top: 6px; }
-  .card-modal .face-tag   { font-size: 10px; padding: 3px 9px; }
-  .card-modal .face-link  { font-size: 12px; margin-top: 8px; }
+/* Restore readable sizes inside modal on mobile (media query reduces them) */
+@media (max-width: 900px) {
+  .card-modal .face-pip-tl,
+  .card-modal .face-pip-br { font-size: 14px; }
+  .card-modal .face-title  { font-size: 18px; }
+  .card-modal .face-sub    { font-size: 10px; letter-spacing: .14em; }
+  .card-modal .face-desc   { font-size: 12px; line-height: 1.5; margin-top: 2px; }
+  .card-modal .face-tags   { gap: 4px; }
+  .card-modal .face-tag    { font-size: 9px; padding: 2px 7px; }
+  .card-modal .face-link   { font-size: 10px; margin-top: 4px; }
 }
 
 /* ── Footer ── */

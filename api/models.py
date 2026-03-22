@@ -31,6 +31,7 @@ class Card:
     tags: List[str]
     face_sub2: str = ""
     link: str = ""
+    link_label: str = ""
 
     def to_dict(self) -> dict:
         return {
@@ -44,6 +45,7 @@ class Card:
             "faceDesc": self.face_desc,
             "tags": self.tags,
             "link": self.link,
+            "linkLabel": self.link_label,
         }
 
 

@@ -1,5 +1,6 @@
 # ============================================================
 # FLASK APP — commented out, preserved for future reference
+# current back end in api/
 # ============================================================
 #
 # from flask import Flask, jsonify

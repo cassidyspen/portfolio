@@ -42,6 +42,7 @@ _portfolio = Portfolio(
         Card(
             pip="J", suit="♠", back_title="Computer Science Tutor and Lab Assistant", art="leaf",
             face_title="CS Tutor + Lab Assistant", face_sub="University of San Diego",
+            face_sub2="Feb 2022 - May 2023",
             face_desc="Assisted undergraduate students with coursework and programming assignments by helping them break down complex problems and develop effective solutions. ",
             tags=["Python", "Operating Systems", "Networking", "Algorithms", "VS Code"],
         ),
@@ -60,26 +61,27 @@ _portfolio = Portfolio(
             face_desc="You're looking at it! Playing card themed portfolio hosted on Vercel with Python and React",
             tags=["React", "Vite", "Python", "Vercel"],
             link="https://github.com/cassidyspen/portfolio",
+            link_label="View Source ↗",
         ),
     ],
     tech=[
         Card(
             pip="8", suit="♦", back_title="Languages & Stack", art="clover",
-            face_title="Languages & Stack", face_sub="Full-Stack",
-            face_desc="Python · JS · Swift · React · Vite · SQL Server · PostgreSQL · AWS · OpenShift · Vercel",
-            tags=["Python", "React", "Vercel"],
+            face_title="Languages & Stack", face_sub="My Specialties",
+            face_desc="Back End:\nPython · FastAPI · Java JS · SpringBoot\nFront End:\nReact · Vite · Angular\nDB:\nSQL Server · PostgreSQL\nCI/CD:\nJenkins · OpenShift · Git",
+            tags=["Front End","+","Back End"]
         ),
         Card(
             pip="7", suit="♦", back_title="Coding Style", art="tulip",
             face_title="Coding Style", face_sub="Philosophy",
-            face_desc="Functional components, clean separation of concerns. Plain JS over TypeScript. Flask blueprints, no fuss.",
-            tags=["Functional", "Plain JS"],
+            face_desc="I write clean, maintainable code with an emphasis on clarity and consistency. I rely on unit testing and often use test-driven development to ensure quality and catch issues early.",
+            tags=["Clean Formatting", "Test Driven Development", "Engineering Best Practices", "Teamwork"],
         ),
         Card(
             pip="6", suit="♦", back_title="Why I Code", art="leaf",
             face_title="Why I Code", face_sub="Mission",
-            face_desc="Building things that actually help people — from accessibility apps to cost-of-living tools.",
-            tags=["Impact", "Accessibility"],
+            face_desc="Development has always stood out to me because I love problem solving, and I am passionate in learning how we can use technology to make the world a better place.",
+            tags=["Impact", "Challenge", "Innovation"],
         ),
     ],
     about=[
