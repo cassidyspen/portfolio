@@ -4,6 +4,12 @@ import { arts, makeBackPattern } from '../data/arts'
 
 const ROTS = { 3: [-3, 0, 3], 4: [-4.5, -1.5, 1.5, 4.5] }
 
+const SUIT_IMGS = { '♠': '/suits/Spade.png', '♣': '/suits/Club.png', '♦': '/suits/Diamond.png', '♥': '/suits/Heart.png' }
+function SuitIcon({ suit }) {
+  const src = SUIT_IMGS[suit]
+  return src ? <img src={src} alt={suit} className="suit-icon" /> : suit
+}
+
 function getRot(index, total) {
   const rots = ROTS[total] || Array.from({ length: total }, (_, i) => (i - (total - 1) / 2) * 3)
   return rots[index] ?? 0
@@ -68,7 +74,7 @@ export function Card({ data, index, total }) {
     <div className="card-modal-backdrop" onClick={() => setZoomed(false)}>
       <div className="card-modal" onClick={e => e.stopPropagation()}>
         <button className="card-modal-close" onClick={() => setZoomed(false)} aria-label="Close">✕</button>
-        <div className="face-pip-tl">{data.pip}<br />{data.suit}</div>
+        <div className="face-pip-tl">{data.pip}<br /><SuitIcon suit={data.suit} /></div>
         <div className="face-body">
           <div className="face-title">{data.faceTitle}</div>
           <div className="face-sub">{data.faceSub}</div>
@@ -91,7 +97,7 @@ export function Card({ data, index, total }) {
             </a>
           )}
         </div>
-        <div className="face-pip-br">{data.pip}<br />{data.suit}</div>
+        <div className="face-pip-br">{data.pip}<br /><SuitIcon suit={data.suit} /></div>
       </div>
     </div>,
     document.body
@@ -127,7 +133,7 @@ export function Card({ data, index, total }) {
           {/* FACE */}
           <div className="card-face" aria-hidden={!flipped}>
             <div className="inner-border" />
-            <div className="face-pip-tl">{data.pip}<br />{data.suit}</div>
+            <div className="face-pip-tl">{data.pip}<br /><SuitIcon suit={data.suit} /></div>
             <div className="face-body">
               <div className="face-title">{data.faceTitle}</div>
               <div className="face-sub">{data.faceSub}</div>
@@ -156,7 +162,7 @@ export function Card({ data, index, total }) {
                 </a>
               )}
             </div>
-            <div className="face-pip-br">{data.pip}<br />{data.suit}</div>
+            <div className="face-pip-br">{data.pip}<br /><SuitIcon suit={data.suit} /></div>
             <div className="card-dbl-hint">double-tap to zoom</div>
             <button
               className="card-zoom-btn"
