@@ -51,7 +51,7 @@ body {
 .header-sub {
   font-family: 'Lora', serif;
   font-style: italic;
-  font-size: 14px;
+  font-size: 15px;
   color: #8a9e74;
   margin-top: 12px;
   letter-spacing: .16em;
@@ -84,7 +84,7 @@ body {
   flex-wrap: wrap;
 }
 .contact-link {
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: .2em;
   text-transform: uppercase;
   color: #7a9060;
@@ -122,7 +122,7 @@ body {
 }
 .section-hint {
   text-align: center;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: .24em;
   text-transform: uppercase;
   color: #b8c8a0;
@@ -169,6 +169,7 @@ body {
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   transition: transform .65s cubic-bezier(.4,0,.2,1);
   border-radius: 16px;
 }
@@ -179,6 +180,7 @@ body {
   inset: 0;
   border-radius: 16px;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   box-shadow: 0 4px 18px rgba(100,80,40,.15), 0 1px 4px rgba(100,80,40,.08);
   background: #fdfaf2;
   border: 1.5px solid #d8ccaa;
@@ -201,7 +203,6 @@ body {
   border-radius: 9px;
   border: .75px solid rgba(160,140,80,.22);
   pointer-events: none;
-  z-index: 1;
 }
 .pip-tl {
   font-family: 'Playfair Display', serif;
@@ -230,7 +231,6 @@ body {
   justify-content: center;
   gap: 7px;
   position: relative;
-  z-index: 2;
 }
 .back-art {
   width: 95px;
@@ -253,6 +253,18 @@ body {
   text-transform: uppercase;
   color: #a8b888;
   text-align: center;
+}
+.card-dbl-hint {
+  position: absolute;
+  bottom: 14px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #c4cead;
+  pointer-events: none;
 }
 
 /* face */
@@ -341,7 +353,7 @@ body {
 }
 .face-img {
   width: calc(50% - 3px);
-  aspect-ratio: 1;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
   border-radius: 8px;
   border: 1px solid #d8ccaa;
@@ -487,7 +499,8 @@ body {
     -webkit-box-orient: vertical;
     max-width: 100%;
   }
-  .back-hint   { font-size: 9px; }
+  .back-hint      { font-size: 9px; }
+  .card-dbl-hint  { font-size: 7px; bottom: 5px; }
 
   .pip-tl,
   .pip-br,

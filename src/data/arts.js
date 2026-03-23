@@ -31,6 +31,6 @@ export function makeBackPattern() {
     <text x="11" y="24" font-size="10" font-family="Georgia,serif" fill="rgba(90,138,58,.5)" font-style="italic">C</text>
     <text x="11" y="35" font-size="9" fill="rgba(143,170,120,.42)">✿</text>
     <text x="130" y="194" font-size="10" font-family="Georgia,serif" fill="rgba(90,138,58,.5)" font-style="italic" transform="rotate(180 134 190)">C</text>
-    <text x="128" y="191" font-size="9" fill="rgba(143,170,120,.42)" transform="rotate(180 132 187)">✿</text>
+    <text x="126" y="199" font-size="9" fill="rgba(143,170,120,.42)" transform="rotate(180 132 187)">✿</text>
   </svg>`
 }

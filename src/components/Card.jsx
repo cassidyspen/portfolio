@@ -158,6 +158,7 @@ export function Card({ data, index, total }) {
               )}
             </div>
             <div className="face-pip-br">{data.pip}<br />{data.suit}</div>
+            <div className="card-dbl-hint">double-tap to zoom</div>
             <button
               className="card-zoom-btn"
               tabIndex={-1}
@@ -176,7 +177,7 @@ export function Spread({ cards, label, hint, noLabel }) {
   return (
     <div className={`section${noLabel ? ' section-continuation' : ''}`}>
       {!noLabel && <div className="section-label">{label}</div>}
-      {!noLabel && <div className="section-hint">{hint || 'hover or tab to lift · press to reveal'}</div>}
+      {!noLabel && <div className="section-hint">{hint || 'hover or tab to lift · tap to reveal'}</div>}
       <div className={`spread spread-${cards.length}`}>
         {cards.map((card, i) => (
           <Card key={i} data={card} index={i} total={cards.length} />
