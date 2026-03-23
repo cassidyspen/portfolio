@@ -500,7 +500,7 @@ body {
     max-width: 100%;
   }
   .back-hint      { font-size: 9px; }
-  .card-dbl-hint  { font-size: 7px; bottom: 5px; }
+  .card-dbl-hint  { font-size: 7px; bottom: 10px; }
 
   .pip-tl,
   .pip-br,
