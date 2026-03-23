@@ -121,7 +121,6 @@ export function Card({ data, index, total }) {
             <div className="back-mid">
               <div className="back-art" dangerouslySetInnerHTML={{ __html: arts[data.art] }} />
               <div className="back-title">{data.backTitle}</div>
-              <div className="back-hint">tap to reveal</div>
             </div>
           </div>
 
