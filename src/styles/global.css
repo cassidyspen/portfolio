@@ -233,8 +233,8 @@ body {
   position: relative;
 }
 .back-art {
-  width: 95px;
-  height: 95px;
+  width: 115px;
+  height: 115px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -490,8 +490,8 @@ body {
 
   /* Scale down art to fit smaller card */
   .back-art {
-    width: 58px;
-    height: 58px;
+    width: 72px;
+    height: 72px;
   }
 
   /* Prevent back-title from overflowing the card */
