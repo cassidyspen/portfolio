@@ -19,14 +19,14 @@ _portfolio = Portfolio(
     ),
     experience=[
         Card(
-            pip="A", suit="♠", back_title="PNC Software Developer", art="hibiscus",
+            pip="A", suit="♣", back_title="PNC Software Developer", art="hibiscus",
             face_title="Software Developer", face_sub="PNC Bank · Pittsburgh",
             face_sub2="Nov 2024 - Present",
             face_desc="Eliminated manual audit workflows by building FastAPI microservices and SQL pipelines used by 400+ employees. Delivered 20+ releases and resolved 100+ security vulnerabilities.",
             tags=["Python", "SQL Server", "OpenShift", "Jenkins", "FastAPI"],
         ),
         Card(
-            pip="K", suit="♠", back_title="CGI Software Developer", art="sunflower",
+            pip="K", suit="♣", back_title="CGI Software Developer", art="sunflower",
             face_title="Software Developer", face_sub="CGI · Pittsburgh",
             face_sub2="June 2024 - Nov 2025",
             face_desc="Developed features for a Flutter/Python app supporting children with autism, including an Angular admin dashboard. Completed training in Java, SpringBoot, Docker, PostgreSQL, and REST API development.",
@@ -40,7 +40,7 @@ _portfolio = Portfolio(
             tags=["Java", "SpringBoot", "Angular", "Figma", "Agile"],
         ),
         Card(
-            pip="J", suit="♠", back_title="Computer Science Tutor and Lab Assistant", art="lavender",
+            pip="J", suit="♣", back_title="Computer Science Tutor and Lab Assistant", art="lavender",
             face_title="CS Tutor + Lab Assistant", face_sub="University of San Diego",
             face_sub2="Feb 2022 - May 2023",
             face_desc="Assisted undergraduate students with coursework and programming assignments by helping them break down complex problems and develop effective solutions. ",
@@ -49,14 +49,14 @@ _portfolio = Portfolio(
     ],
     projects=[
         Card(
-            pip="10", suit="♣", back_title="re·locate", art="cosmos",
+            pip="10", suit="♦", back_title="re·locate", art="cosmos",
             face_title="re·locate", face_sub="relocatecost.com",
             face_desc="Built a cost of living calculator by using prompt engineering with Anthropic Claude and ChatGPT to compare living costs with 8000+ cities.",
             tags=["Vanilla JS", "Vercel", "CSS", "RapidAPI", "HTML"],
             link="https://relocatecost.com",
         ),
         Card(
-            pip="9", suit="♣", back_title="This Portfolio", art="peony",
+            pip="9", suit="♦", back_title="This Portfolio", art="peony",
             face_title="This Portfolio", face_sub="cassidyspencer.dev",
             face_desc="You're looking at it! Playing card themed portfolio hosted on Vercel with Python and React",
             tags=["React", "Vite", "Python", "Vercel"],
@@ -66,7 +66,7 @@ _portfolio = Portfolio(
     ],
     tech=[
         Card(
-            pip="8", suit="♦", back_title="Languages & Stack", art="iris",
+            pip="8", suit="♠", back_title="Languages & Stack", art="iris",
             face_title="Languages & Stack", face_sub="My Specialties",
             face_desc="Back End:\nPython · FastAPI · Java JS · SpringBoot\nFront End:\nReact · Vite · Angular\nDB:\nSQL Server · PostgreSQL\nCI/CD:\nJenkins · OpenShift · Git",
             tags=["Front End","+","Back End"]
@@ -78,7 +78,7 @@ _portfolio = Portfolio(
             tags=["Clean Formatting", "Test Driven Development", "Engineering Best Practices", "Teamwork"],
         ),
         Card(
-            pip="6", suit="♦", back_title="Why I Code", art="jasmine",
+            pip="6", suit="♠", back_title="Why I Code", art="jasmine",
             face_title="Why I Code", face_sub="Mission",
             face_desc="Development has always stood out to me because I love problem solving, and I am passionate in learning how we can use technology to make the world a better place.",
             tags=["Impact", "Challenge", "Innovation"],
