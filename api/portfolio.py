@@ -33,7 +33,7 @@ _portfolio = Portfolio(
             tags=["Python", "Java", "Angular", "Flutter", "PostgreSQL"],
         ),
         Card(
-            pip="Q", suit="♠", back_title="CGI Internships", art="daisy",
+            pip="Q", suit="♣", back_title="CGI Internships", art="daisy",
             face_title="Software Development Intern", face_sub="CGI · Pittsburgh",
             face_sub2="Summer 2022 + Summer 2023",
             face_desc="Built an API health dashboard using Java and Spring Boot and developed Angular web components. Led Scrum ceremonies, presented deliverables, and raised $950 for local teachers as Intern Lead.",
@@ -72,7 +72,7 @@ _portfolio = Portfolio(
             tags=["Front End","+","Back End"]
         ),
         Card(
-            pip="7", suit="♦", back_title="Coding Style", art="tulip",
+            pip="7", suit="♠", back_title="Coding Style", art="tulip",
             face_title="Coding Style", face_sub="Philosophy",
             face_desc="I write clean, maintainable code with an emphasis on clarity and consistency. I rely on unit testing and often use test-driven development to ensure quality and catch issues early.",
             tags=["Clean Formatting", "Test Driven Development", "Engineering Best Practices", "Teamwork"],

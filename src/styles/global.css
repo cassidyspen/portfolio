@@ -273,6 +273,11 @@ body {
   flex-direction: column;
   padding: 16px;
 }
+.suit-icon {
+  width: 2em;
+  height: 2em;
+  display: block;
+}
 .face-pip-tl {
   font-family: 'Playfair Display', serif;
   font-size: 16px;
@@ -500,7 +505,7 @@ body {
     max-width: 100%;
   }
   .back-hint      { font-size: 9px; }
-  .card-dbl-hint  { font-size: 7px; bottom: 5px; }
+  .card-dbl-hint  { font-size: 7px; bottom: 10px; }
 
   .pip-tl,
   .pip-br,
