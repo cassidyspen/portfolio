@@ -19,14 +19,14 @@ _portfolio = Portfolio(
     ),
     experience=[
         Card(
-            pip="A", suit="♣", back_title="PNC Software Developer", art="hibiscus",
+            pip="A", suit="♣", back_title="PNC - Software Developer", art="hibiscus",
             face_title="Software Developer", face_sub="PNC Bank · Pittsburgh",
             face_sub2="Nov 2024 - Present",
             face_desc="Eliminated manual audit workflows by building FastAPI microservices and SQL pipelines used by 400+ employees. Delivered 20+ releases and resolved 100+ security vulnerabilities.",
             tags=["Python", "SQL Server", "OpenShift", "Jenkins", "FastAPI"],
         ),
         Card(
-            pip="K", suit="♣", back_title="CGI Software Developer", art="sunflower",
+            pip="K", suit="♣", back_title="CGI - Software Developer", art="sunflower",
             face_title="Software Developer", face_sub="CGI · Pittsburgh",
             face_sub2="June 2024 - Nov 2025",
             face_desc="Developed features for a Flutter/Python app supporting children with autism, including an Angular admin dashboard. Completed training in Java, SpringBoot, Docker, PostgreSQL, and REST API development.",
@@ -107,7 +107,7 @@ _portfolio = Portfolio(
         Card(
             pip="2", suit="♥", back_title="Volunteer", art="rose",
             face_title="Volunteer", face_sub="Community",
-            face_desc="I enjoy giving back to my community by volunteering with Casa San Jose to teach ESL Pittsburgh, and serving with Northway Christian Community on their production team and in outreach efforts. ",
+            face_desc="I enjoy giving back to my community by volunteering with Casa San Jose to teach ESL in Pittsburgh, and serving with Northway Christian Community on their production team and in outreach efforts. ",
             tags=["ESL", "Teaching", "Music", "Outreach"],
         ),
     ],

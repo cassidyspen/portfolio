@@ -1,85 +1,78 @@
 # Cassidy Spencer — Portfolio
 
-A playing card–themed portfolio built with React + Vite (frontend) and Flask (backend).
+A playing card–themed portfolio built with React + Vite (frontend) and Python (backend), deployed on Vercel.
 
 ---
 
 ## Project Structure
 
 ```
-cassidy-portfolio/
-├── backend/
-│   ├── app.py              # Flask API
-│   └── requirements.txt
-└── frontend/
-    ├── index.html
-    ├── vite.config.js
-    ├── package.json
-    └── src/
-        ├── main.jsx
-        ├── App.jsx
-        ├── components/
-        │   ├── Card.jsx
-        │   ├── ProjectCard.jsx
-        │   └── DeckCorner.jsx
-        ├── data/
-        │   └── arts.js         # SVG botanical illustrations
-        └── styles/
-            └── global.css
+portfolio/
+├── api/
+│   ├── portfolio.py        # Python serverless API handler
+│   └── models.py           # Card, Contact, Portfolio dataclasses
+├── public/
+│   ├── flowers/            # Flower PNG images for card backs
+│   └── suits/              # Suit icon PNGs (Club, Diamond, Heart, Spade)
+├── src/
+│   ├── App.jsx
+│   ├── components/
+│   │   ├── Card.jsx        # Card + Spread components
+│   │   └── DeckCorner.jsx
+│   ├── data/
+│   │   └── arts.js         # Flower image mappings + card back SVG pattern
+│   └── styles/
+│       └── global.css
+├── index.html
+├── vite.config.js
+└── vercel.json
 ```
 
 ---
 
 ## Running Locally
 
-### 1. Backend (Flask)
+### 1. Backend (Python)
 
 ```bash
-cd backend
-python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-python app.py
+cd api
+python portfolio.py
 ```
 
-Flask runs on **http://localhost:5000**
+Runs on **http://localhost:5000** (or use `vercel dev` to run the full stack locally).
 
 ### 2. Frontend (React + Vite)
 
 ```bash
-cd frontend
 npm install
 npm run dev
 ```
 
-Vite runs on **http://localhost:5173** and proxies `/api` to Flask.
+Vite runs on **http://localhost:5173** and proxies `/api` to the Python handler.
 
 ---
 
-## Building for Production
+## Deployment
+
+Deployed on **Vercel**. The `api/` directory is served as Vercel serverless functions. Pushing to `main` triggers an automatic deploy.
 
 ```bash
-cd frontend
-npm run build
+vercel --prod
 ```
-
-The `dist/` folder can be deployed to AWS S3 / CloudFront.
-Flask can be deployed to AWS Elastic Beanstalk.
 
 ---
 
 ## Updating Content
 
-All portfolio content lives in `backend/app.py` in the `PORTFOLIO_DATA` dict.
-Update your experience, projects, tech, and about cards there — no frontend changes needed.
+All portfolio content lives in `api/portfolio.py` in the `_portfolio` object. Update experience, projects, tech, and about cards there — no frontend changes needed. Each card has an `art` field that maps to a flower PNG in `public/flowers/`.
 
 ---
 
 ## Tech Stack
 
-| Layer    | Tech                        |
-|----------|-----------------------------|
-| Frontend | React 18, Vite 5            |
-| Backend  | Flask 3, Flask-CORS         |
-| Deploy   | AWS S3 + CloudFront + EB    |
+| Layer    | Tech                                           |
+|----------|------------------------------------------------|
+| Frontend | React 18, Vite                                 |
+| Backend  | Python (`http.server`), Vercel serverless      |
+| Deploy   | Vercel                                         |
 | Fonts    | Playfair Display, Lora, DM Sans (Google Fonts) |
