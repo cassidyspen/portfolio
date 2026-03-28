@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Spread } from './components/Card'
 
 function useWideScreen() {
@@ -16,6 +16,8 @@ export default function App() {
   const [data, setData] = useState(null)
   const [error, setError] = useState(null)
   const wide = useWideScreen()
+  const [menuOpen, setMenuOpen] = useState(false)
+  const menuRef = useRef(null)
 
   useEffect(() => {
     fetch('/api/portfolio')
@@ -23,6 +25,16 @@ export default function App() {
       .then(setData)
       .catch(() => setError('Could not load portfolio data.'))
   }, [])
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    if (!menuOpen) return
+    const handler = e => {
+      if (!menuRef.current?.contains(e.target)) setMenuOpen(false)
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [menuOpen])
 
   // On mobile, body is wider than viewport — start scroll at center so
   // background extends equally in both directions when swiping.
@@ -33,11 +45,36 @@ export default function App() {
     }
   }, [data])
 
+  const scrollTo = id => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    setMenuOpen(false)
+  }
+
   if (error) return <div className="loading">{error}</div>
   if (!data)  return <div className="loading">Loading...</div>
 
   return (
     <div className="page">
+      {/* Hamburger navigation */}
+      <nav className="nav-menu" ref={menuRef}>
+        <button
+          className="nav-hamburger"
+          onClick={() => setMenuOpen(m => !m)}
+          aria-label="Navigation menu"
+          aria-expanded={menuOpen}
+        >
+          <span /><span /><span />
+        </button>
+        {menuOpen && (
+          <div className="nav-dropdown">
+            <button onClick={() => scrollTo('experience')}>Experience</button>
+            <button onClick={() => scrollTo('projects')}>Projects</button>
+            <button onClick={() => scrollTo('tech')}>Tech Stuff</button>
+            <button onClick={() => scrollTo('about')}>About Me</button>
+          </div>
+        )}
+      </nav>
+
       {/* Header */}
       <header className="header">
         <div className="header-sprig">✦ &nbsp;✿&nbsp; ✦</div>
@@ -52,34 +89,43 @@ export default function App() {
           <a className="contact-link" href={data.contact.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
           <span className="contact-sep">·</span>
           <a className="contact-link" href={data.contact.github} target="_blank" rel="noreferrer">GitHub</a>
-          <span className="contact-sep">·</span>
-          <a className="contact-link" href={`mailto:${data.contact.email}`}>{data.contact.email}</a>
           {data.contact.resume && <>
             <span className="contact-sep">·</span>
             <a className="contact-link" href={data.contact.resume} target="_blank" rel="noreferrer">Resume</a>
           </>}
+          <span className="contact-sep">·</span>
+          <a className="contact-link" href={`mailto:${data.contact.email}`}>{data.contact.email}</a>
         </div>
       </header>
 
       {/* Experience */}
-      {wide
-        ? <Spread cards={data.experience} label="Experience" />
-        : <><Spread cards={data.experience.slice(0, 2)} label="Experience" />
-            <Spread cards={data.experience.slice(2, 4)} noLabel /></>
-      }
+      <div id="experience">
+        {wide
+          ? <Spread cards={data.experience} label="Experience" />
+          : <><Spread cards={data.experience.slice(0, 2)} label="Experience" />
+              <Spread cards={data.experience.slice(2, 4)} noLabel /></>
+        }
+      </div>
 
       {/* Projects */}
-      <Spread cards={data.projects} label="Projects" />
+      <div id="projects">
+        <Spread cards={data.projects} label="Projects" />
+      </div>
 
       {/* Tech */}
-      <Spread cards={data.tech} label="Tech Stuff" />
+      <div id="tech">
+        <Spread cards={data.tech} label="Tech Stuff" />
+      </div>
 
       {/* About Me */}
-      {wide
-        ? <Spread cards={data.about} label="About Me" />
-        : <><Spread cards={data.about.slice(0, 2)} label="About Me" />
-            <Spread cards={data.about.slice(2, 4)} noLabel /></>
-      }
+      <div id="about">
+        {wide
+          ? <Spread cards={data.about} label="About Me" />
+          : <><Spread cards={data.about.slice(0, 2)} label="About Me" />
+              <Spread cards={data.about.slice(2, 4)} noLabel /></>
+        }
+      </div>
+
       <footer className="footer">
         <a className="contact-link" href="https://docs.google.com/forms/d/e/1FAIpQLScPVYlqdGVZda0mMjoYShRdFUDnkoVSTceyfL31EYMeNGGh0g/viewform?usp=dialog">
           Feedback - Thank you!

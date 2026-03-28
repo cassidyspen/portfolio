@@ -110,11 +110,20 @@ Backend
 - Python serverless function (api/portfolio.py) using http.server.BaseHTTPRequestHandler
 - Single endpoint: GET /api/portfolio
 - Returns full portfolio JSON including all card data
+- Strawberry GraphQL schema (api/schema.py) used as an internal data layer — resolvers query the database and return typed Card objects
+- psycopg (v3) handles PostgreSQL connections via a module-level cached connection
+
+Data
+- Portfolio card data stored in a PostgreSQL `cards` table hosted on Supabase
+- Columns: id, pip, suit, section, sort_order, back_title, art, face_title, face_sub, face_sub2, face_desc, link, link_label, images (text[]), tags (text[])
+- Cards are grouped by `section` (experience, projects, tech, about) and ordered by `sort_order`
+- DATABASE_URL environment variable connects the serverless function to the database
 
 Deployment
 - Hosted on Vercel
 - api/ directory served as serverless functions
 - Frontend built with npm run build → dist/
+- DATABASE_URL set in Vercel project environment variables
 
 10. Flower Art System
 Each card has a unique flower PNG from public/flowers/:

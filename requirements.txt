@@ -1,1 +1,2 @@
-# Vercel Python runtime detection — stdlib only, no dependencies needed
+strawberry-graphql
+psycopg[binary]

@@ -271,7 +271,7 @@ body {
 .card-face {
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding: 16px 16px 70px;
 }
 .suit-icon {
   width: 2em;
@@ -292,8 +292,9 @@ body {
   color: #5a8a3a;
   line-height: 1.15;
   transform: rotate(180deg);
-  align-self: flex-end;
-  margin-top: auto;
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
 }
 .face-body {
   flex: 1;
@@ -521,9 +522,9 @@ body {
   .pf-meta     { font-size: 7px; }
   .pf-desc     { font-size: 8.5px; line-height: 1.4; }
 
-  /* Card face: tighter padding, let content flow naturally */
-  .card-face   { padding: 10px; }
-  .face-pip-br { margin-top: 4px; }
+  /* Card face: tighter padding, with bottom room for absolute pip-br */
+  .card-face   { padding: 10px 10px 46px; }
+  .face-pip-br { bottom: 10px; right: 10px; }
 
   /* Contact links: smaller text + ensure email can break/wrap */
   .contact-links { gap: 10px; }
@@ -582,7 +583,12 @@ body {
   /* Card face layout */
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  padding: 16px 16px 70px;
+}
+
+.card-modal .face-desc {
+  font-size: 16px;
+  line-height: 1.7;
 }
 
 .card-modal-close {
@@ -605,7 +611,7 @@ body {
   .card-modal .face-pip-br { font-size: 14px; }
   .card-modal .face-title  { font-size: 18px; }
   .card-modal .face-sub    { font-size: 10px; letter-spacing: .14em; }
-  .card-modal .face-desc   { font-size: 12px; line-height: 1.5; margin-top: 2px; }
+  .card-modal .face-desc   { font-size: 14px; line-height: 1.6; margin-top: 2px; }
   .card-modal .face-tags   { gap: 4px; }
   .card-modal .face-tag    { font-size: 9px; padding: 2px 7px; }
   .card-modal .face-link   { font-size: 10px; margin-top: 4px; }
@@ -616,4 +622,69 @@ body {
   text-align: center;
   padding: 20px 0 8px;
   margin-top: 8px;
+}
+
+/* ── Hamburger navigation ── */
+.nav-menu {
+  position: fixed;
+  top: 18px;
+  left: 20px;
+  z-index: 500;
+}
+
+.nav-hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  background: rgba(253,250,242,.88);
+  border: 1px solid #d8ccaa;
+  border-radius: 8px;
+  padding: 9px 10px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 8px rgba(100,80,40,.10);
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: #5a8a3a;
+  border-radius: 2px;
+}
+
+.nav-dropdown {
+  display: flex;
+  flex-direction: column;
+  margin-top: 6px;
+  background: rgba(253,250,242,.95);
+  border: 1px solid #d8ccaa;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(100,80,40,.14);
+  backdrop-filter: blur(4px);
+  min-width: 140px;
+}
+
+.nav-dropdown button {
+  background: none;
+  border: none;
+  padding: 11px 20px;
+  text-align: left;
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: #5a7048;
+  letter-spacing: .06em;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+
+.nav-dropdown button:hover {
+  background: rgba(150,200,110,.12);
+  color: #3a6a20;
+}
+
+.nav-dropdown button + button {
+  border-top: .5px solid rgba(140,170,110,.2);
 }

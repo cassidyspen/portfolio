@@ -15,6 +15,25 @@ function getRot(index, total) {
   return rots[index] ?? 0
 }
 
+// Renders text with **bold** markers and newlines preserved.
+// Handles both real newlines and literal \n escape sequences from the database.
+function renderDesc(text) {
+  if (!text) return null
+  return text.replace(/\\n/g, '\n').split('\n').map((line, i) => {
+    const parts = line.split(/(\*\*[^*]+\*\*)/)
+    return (
+      <span key={i}>
+        {i > 0 && <br />}
+        {parts.map((part, j) =>
+          part.startsWith('**') && part.endsWith('**')
+            ? <strong key={j}>{part.slice(2, -2)}</strong>
+            : part
+        )}
+      </span>
+    )
+  })
+}
+
 let zTop = 10
 
 export function Card({ data, index, total }) {
@@ -79,7 +98,7 @@ export function Card({ data, index, total }) {
           <div className="face-title">{data.faceTitle}</div>
           <div className="face-sub">{data.faceSub}</div>
           {data.faceSub2 && <div className="face-sub">{data.faceSub2}</div>}
-          <div className="face-desc">{data.faceDesc}</div>
+          <div className="face-desc">{renderDesc(data.faceDesc)}</div>
           {data.images && data.images.length > 0 && (
             <div className="face-images">
               {data.images.map((src, i) => (
@@ -138,7 +157,7 @@ export function Card({ data, index, total }) {
               <div className="face-title">{data.faceTitle}</div>
               <div className="face-sub">{data.faceSub}</div>
               <div className="face-sub">{data.faceSub2}</div>
-              <div className="face-desc">{data.faceDesc}</div>
+              <div className="face-desc">{renderDesc(data.faceDesc)}</div>
               {data.images && data.images.length > 0 && (
                 <div className="face-images">
                   {data.images.map((src, i) => (
