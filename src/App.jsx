@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 import { Spread } from './components/Card'
 
 function useWideScreen() {
@@ -131,6 +132,7 @@ export default function App() {
           Feedback - Thank you!
         </a>
       </footer>
+      <Analytics />
     </div>
   )
 }
